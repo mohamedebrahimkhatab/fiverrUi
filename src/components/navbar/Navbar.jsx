@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className='navbar'>
       <div className="container">
         <div className="logo">
-          <span className='text'>fiverr</span>
+          <span className='teext'>fiverr</span>
           <span className='dot'>.</span>
         </div>
         <div className="links"></div>
