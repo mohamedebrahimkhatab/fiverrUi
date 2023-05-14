@@ -3,9 +3,9 @@ import React from "react";
 import "./Home.scss";
 import { cards, projects } from "../../data";
 import Slide from "../../components/slide/Slide";
+import CatCard from "../../components/catCard/CatCard";
 import Featured from "../../components/featured/Featured";
 import TrustedBy from "../../components/trustedBy/TrustedBy";
-import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
 
 const Home = () => {
@@ -43,7 +43,7 @@ const Home = () => {
               Protected payments, every time
             </div>
             <p>
-              Always know what you'll pay upfront. Your payment isn't released
+              Always know what you{"'"}ll pay upfront. Your payment isn{"'"}t released
               until you approve the work.
             </p>
             <div className="title">
