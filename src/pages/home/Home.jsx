@@ -22,7 +22,7 @@ const Home = () => {
         <div className="container">
           <div className="item">
             <h1>
-              A whole world of freelance talent at your fingertips............
+              A whole world of freelance talent at your fingertips
             </h1>
             <div className="title">
               <img src="./img/check.png" alt="" />
