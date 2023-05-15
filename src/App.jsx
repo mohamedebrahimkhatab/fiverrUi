@@ -14,14 +14,20 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Register from "./pages/register/Register";
 import Messages from "./pages/messages/Messages";
+import newRequest from "../utilis/newRequest";
+
+import { QueryClient,QueryClientProvider,} from "@tanstack/react-query";
+const queryClient = new QueryClient();
 
 function App() {
   const Layout = () => {
     return (
       <div className="app">
-        <Navbar />
-        <Outlet />
-        <Footer />
+        <QueryClientProvider client={queryClient}>
+          <Navbar />
+          <Outlet />
+          <Footer />
+        </QueryClientProvider>
       </div>
     );
   };
