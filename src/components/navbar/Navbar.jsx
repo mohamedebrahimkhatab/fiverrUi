@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./Navbar.scss";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import newRequest from "../../../utilis/newRequest";
+
+import "./Navbar.scss";
+import newRequest from "../../../utils/newRequest";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -47,22 +48,10 @@ const Navbar = () => {
           <span>Fiverr Business</span>
           <span>Explore</span>
           <span>English</span>
-          {!currentUser && (
-            <Link className="link" to="/login">
-              {" "}
-              <span>Sign in</span>{" "}
-            </Link>
-          )}
           {!currentUser?.isSeller && <span>Become a Seller</span>}
-          {!currentUser && (
-            <Link className="link" to="/register">
-              {" "}
-              <button>Join</button>{" "}
-            </Link>
-          )}
-          {currentUser && (
+          {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img src={currentUser.img || "./img/noavatar.jpg"} alt="" />
+              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
@@ -83,11 +72,20 @@ const Navbar = () => {
                     Messages
                   </Link>
                   <Link className="link" onClick={handleLogout}>
-                    Log out
+                    Logout
                   </Link>
                 </div>
               )}
             </div>
+          ) : (
+            <>
+              <Link to="/login" className="link">
+                Sign in
+              </Link>
+              <Link className="link" to="/register">
+                <button>Join</button>
+              </Link>
+            </>
           )}
         </div>
       </div>

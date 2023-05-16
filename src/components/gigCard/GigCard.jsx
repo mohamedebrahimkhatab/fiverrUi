@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./GigCard.scss";
-import newRequest from "../../../utilis/newRequest";
 import { useQuery } from "@tanstack/react-query";
 
+import "./GigCard.scss";
+import newRequest from "../../../utils/newRequest";
 
 const GigCard = ({ item }) => {
   const { isLoading, error, data } = useQuery({

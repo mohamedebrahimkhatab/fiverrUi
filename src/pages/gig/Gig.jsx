@@ -2,9 +2,10 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Slider } from "infinite-react-carousel/lib";
+import { Link } from "react-router-dom";
 
 import "./Gig.scss";
-import newRequest from "../../../utilis/newRequest";
+import newRequest from "../../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
 
 function Gig() {
@@ -156,9 +157,9 @@ function Gig() {
                 </div>
               ))}
             </div>
-            {/* <Link to={`/pay/${id}`}>
-            <button>Continue</button>
-            </Link> */}
+            <Link to={`/pay/${id}`}>
+              <button>Continue</button>
+            </Link>
           </div>
         </div>
       )}
