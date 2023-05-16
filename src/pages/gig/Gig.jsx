@@ -1,9 +1,11 @@
 import React from "react";
-import "./Gig.scss";
-import { Slider } from "infinite-react-carousel/lib";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { Slider } from "infinite-react-carousel/lib";
+
+import "./Gig.scss";
 import newRequest from "../../../utilis/newRequest";
+import Reviews from "../../components/reviews/Reviews";
 
 function Gig() {
   const { id } = useParams();
@@ -128,7 +130,7 @@ function Gig() {
                 </div>
               </div>
             )}
-            {/* <Reviews gigId={id} /> */}
+            <Reviews gigId={id} />
           </div>
           <div className="right">
             <div className="price">
