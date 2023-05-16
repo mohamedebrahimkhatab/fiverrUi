@@ -1,11 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import React, { useReducer, useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { gigReducer, INITIAL_STATE } from "../../reducers/gigReducer";
-
 import "./Add.scss";
+import { gigReducer, INITIAL_STATE } from "../../reducers/gigReducer";
 import upload from "../../utils/upload";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
+import { useNavigate } from "react-router-dom";
 
 const Add = () => {
   const [singleFile, setSingleFile] = useState(undefined);
@@ -15,6 +14,7 @@ const Add = () => {
   const [state, dispatch] = useReducer(gigReducer, INITIAL_STATE);
 
   const handleChange = (e) => {
+    e.preventDefault();
     dispatch({
       type: "CHANGE_INPUT",
       payload: { name: e.target.name, value: e.target.value },
@@ -53,6 +53,7 @@ const Add = () => {
 
   const mutation = useMutation({
     mutationFn: (gig) => {
+      console.log(gig)
       return newRequest.post("/gigs", gig);
     },
     onSuccess: () => {
