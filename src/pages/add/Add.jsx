@@ -1,10 +1,11 @@
-import React, { useReducer, useState } from "react";
-import "./Add.scss";
-import { gigReducer, INITIAL_STATE } from "../../reducers/gigReducer";
-import upload from "../../utils/upload";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import React, { useReducer, useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { gigReducer, INITIAL_STATE } from "../../reducers/gigReducer";
+
+import "./Add.scss";
+import upload from "../../utils/upload";
+import newRequest from "../../utils/newRequest";
 
 const Add = () => {
   const [singleFile, setSingleFile] = useState(undefined);

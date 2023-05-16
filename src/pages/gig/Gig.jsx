@@ -1,11 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Slider } from "infinite-react-carousel/lib";
-import { Link } from "react-router-dom";
 
 import "./Gig.scss";
-import newRequest from "../../../utils/newRequest";
+import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
 
 function Gig() {

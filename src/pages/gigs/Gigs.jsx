@@ -3,8 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useRef, useState } from "react";
 
 import "./Gigs.scss";
+import newRequest from "../../utils/newRequest";
 import GigCard from "../../components/gigCard/GigCard";
-import newRequest from "../../../utils/newRequest";
 
 function Gigs() {
   const [sort, setSort] = useState("sales");
