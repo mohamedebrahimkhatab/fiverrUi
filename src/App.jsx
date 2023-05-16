@@ -1,4 +1,5 @@
 import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 import "./app.scss";
@@ -14,9 +15,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Register from "./pages/register/Register";
 import Messages from "./pages/messages/Messages";
-import newRequest from "../utilis/newRequest";
 
-import { QueryClient,QueryClientProvider,} from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 function App() {
