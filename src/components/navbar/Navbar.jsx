@@ -26,7 +26,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await newRequest.post("/auth/logout",true);
+      await newRequest.post("/auth/logout", true);
       localStorage.setItem("currentUser", null);
       navigate("/");
     } catch (err) {
@@ -47,15 +47,22 @@ const Navbar = () => {
           <span>Fiverr Business</span>
           <span>Explore</span>
           <span>English</span>
-          {!currentUser &&<Link className="link" to="/login"> <span>Sign in</span> </Link> }
+          {!currentUser && (
+            <Link className="link" to="/login">
+              {" "}
+              <span>Sign in</span>{" "}
+            </Link>
+          )}
           {!currentUser?.isSeller && <span>Become a Seller</span>}
-          {!currentUser && <Link className="link" to="/register"> <button>Join</button> </Link>  }
+          {!currentUser && (
+            <Link className="link" to="/register">
+              {" "}
+              <button>Join</button>{" "}
+            </Link>
+          )}
           {currentUser && (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img
-                src={currentUser.img || "https://i.pinimg.com/originals/69/7a/60/697a601f4347dbb68e1ffdbfde732a88.jpg"}
-                alt=""
-              />
+              <img src={currentUser.img || "./img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
