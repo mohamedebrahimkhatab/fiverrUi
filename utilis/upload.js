@@ -3,10 +3,13 @@ import axios from "axios";
 const upload = async (file) => {
   const data = new FormData();
   data.append("file", file);
-  data.append("upload_preset", "foam11");
-
+  data.append("upload_preset", "foam");
+  console.log(data);
   try {
-    const res = await axios.post("https://api.cloudinary.com/v1_1/dbafqor1r/image/upload",data);
+    const res = await axios.post(
+      "https://api.cloudinary.com/v1_1/khatab/image/upload",
+      data
+    );
 
     const { url } = res.data;
     return url;

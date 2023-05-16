@@ -12,6 +12,20 @@
   &.active {
     background-color: white;
     color: black;
+    .container {
+      .links {
+        button {
+          border: 1px solid #1dbf73;
+          color: #1dbf73;
+
+          &:hover {
+            background-color: #1dbf73;
+            border-color: #1dbf73;
+            color:white;
+          }
+        }
+      }
+    }
   }
 
   .container {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Login.scss";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import "./Login.scss";
 import newRequest from "../../../utilis/newRequest";
 
 function Login() {
