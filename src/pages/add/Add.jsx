@@ -1,16 +1,11 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import "./Add.scss";
 import { gigReducer, INITIAL_STATE } from "../../reducers/gigReducer";
-import upload from "../../utils/upload";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 
 const Add = () => {
-  const [singleFile, setSingleFile] = useState(undefined);
-  const [files, setFiles] = useState([]);
-  const [uploading, setUploading] = useState(false);
-
   const [state, dispatch] = useReducer(gigReducer, INITIAL_STATE);
 
   const handleChange = (e) => {
@@ -29,31 +24,13 @@ const Add = () => {
     e.target[0].value = "";
   };
 
-  const handleUpload = async () => {
-    setUploading(true);
-    try {
-      const cover = await upload(singleFile);
-
-      const images = await Promise.all(
-        [...files].map(async (file) => {
-          const url = await upload(file);
-          return url;
-        })
-      );
-      setUploading(false);
-      dispatch({ type: "ADD_IMAGES", payload: { cover, images } });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const navigate = useNavigate();
 
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: (gig) => {
-      console.log(gig)
+      console.log(gig);
       return newRequest.post("/gigs", gig);
     },
     onSuccess: () => {
@@ -87,24 +64,20 @@ const Add = () => {
               <option value="animation">Animation</option>
               <option value="music">Music</option>
             </select>
-            <div className="images">
-              <div className="imagesInputs">
-                <label htmlFor="">Cover Image</label>
-                <input
-                  type="file"
-                  onChange={(e) => setSingleFile(e.target.files[0])}
-                />
-                <label htmlFor="">Upload Images</label>
-                <input
-                  type="file"
-                  multiple
-                  onChange={(e) => setFiles(e.target.files)}
-                />
-              </div>
-              <button onClick={handleUpload}>
-                {uploading ? "uploading" : "Upload"}
-              </button>
-            </div>
+            <label htmlFor="">Cover</label>
+            <input
+              type="text"
+              name="cover"
+              placeholder="e.g. your cover photo from drive"
+              onChange={handleChange}
+            />
+            <label htmlFor="">Image</label>
+            <input
+              type="text"
+              name="image"
+              placeholder="e.g.  your image from drive "
+              onChange={handleChange}
+            />
             <label htmlFor="">Description</label>
             <textarea
               name="desc"

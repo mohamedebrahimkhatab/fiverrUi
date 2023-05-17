@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./Home.scss";
 import { cards, projects } from "../../data";
@@ -7,8 +7,23 @@ import CatCard from "../../components/catCard/CatCard";
 import Featured from "../../components/featured/Featured";
 import TrustedBy from "../../components/trustedBy/TrustedBy";
 import ProjectCard from "../../components/projectCard/ProjectCard";
+import GigCard from "../../components/gigCard/GigCard";
 
 const Home = () => {
+  const [gigs, setGigs] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/gigs")
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the state with the fetched data
+        setGigs(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching gigs:", error);
+      });
+  }, []);
+
   return (
     <div className="home">
       <Featured />
@@ -65,7 +80,7 @@ const Home = () => {
         <div className="container">
           <div className="item">
             <h1>
-              Fiverr <i>business</i>
+              FOAM <i>business</i>
             </h1>
             <h1>
               A business solution designed for <i>teams</i>
@@ -99,9 +114,9 @@ const Home = () => {
         </div>
       </div>
 
-      <Slide slidesToShow={4} arrowsScroll={3}>
-        {projects.map((card) => (
-          <ProjectCard key={card.id} card={card} />
+      <Slide slidesToShow={1} arrowsScroll={1}>
+        {gigs.map((gig) => (
+          <GigCard key={gig.id} item={gig} />
         ))}
       </Slide>
     </div>

@@ -30,10 +30,11 @@ const Featured = () => {
           </div>
           <div className="popular">
             <span>Popular: </span>
-            <button>Web Design</button>
-            <button>Wordpress</button>
-            <button>Logo Design</button>
-            <button>AI Services</button>
+            <button>Design</button>
+            <button>Animation</button>
+            <button>Music</button>
+            <button>Web Deveolpment</button>
+            <button>Mobile Deveolpment</button>
           </div>
         </div>
         <div className="right">

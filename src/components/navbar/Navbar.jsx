@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import "./Navbar.scss";
-import newRequest from "../../utils/newRequest"
+import newRequest from "../../utils/newRequest";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -40,14 +40,18 @@ const Navbar = () => {
       <div className="container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">F<span className="dot">.</span>O<span className="dot">.</span>A<span className="dot">.</span>M</span>
+            <span className="text">
+              F<span className="dot">.</span>O<span className="dot">.</span>A
+              <span className="dot">.</span>M
+            </span>
           </Link>
         </div>
         <div className="links">
-          <span>Foam Business</span>
-          <span>Explore</span>
-          <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          {/* <span>Foam Business</span> */}
+          {/* <span>Explore</span> */}
+          {/* <span>English</span> */}
+          {/* {currentUser ??
+            (currentUser?.isSeller ? <span>Seller</span> : <span>User</span>)} */}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
@@ -93,31 +97,19 @@ const Navbar = () => {
           <hr />
           <div className="menu">
             <Link className="link menuLink" to="/">
-              Graphics & Design
+              Design
             </Link>
             <Link className="link menuLink" to="/">
-              Video & Animation
+              Animation
             </Link>
             <Link className="link menuLink" to="/">
-              Writing & Translation
+              Music
             </Link>
             <Link className="link menuLink" to="/">
-              AI Services
+              Web Development
             </Link>
             <Link className="link menuLink" to="/">
-              Digital Marketing
-            </Link>
-            <Link className="link menuLink" to="/">
-              Music & Audio
-            </Link>
-            <Link className="link menuLink" to="/">
-              Programming & Tech
-            </Link>
-            <Link className="link menuLink" to="/">
-              Business
-            </Link>
-            <Link className="link menuLink" to="/">
-              Lifestyle
+              Mobile Development
             </Link>
           </div>
         </>
