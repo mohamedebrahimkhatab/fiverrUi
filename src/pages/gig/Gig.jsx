@@ -70,11 +70,9 @@ function Gig() {
                 )}
               </div>
             )}
-            <Slider slidesToShow={1} arrowsScroll={1} className="slider">
-              {data.images.map((img) => (
-                <img key={img} src={img} alt="" />
-              ))}
-            </Slider>
+            <div className="slider">
+              <img src={data.image ? data.image : "/img/coin.png"} alt="" />
+            </div>
             <h2>About This Gig</h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (

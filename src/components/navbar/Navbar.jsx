@@ -96,19 +96,19 @@ const Navbar = () => {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=design">
               Design
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=animation">
               Animation
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=music">
               Music
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=web">
               Web Development
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=mobile">
               Mobile Development
             </Link>
           </div>

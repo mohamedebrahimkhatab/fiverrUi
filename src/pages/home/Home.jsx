@@ -1,34 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import "./Home.scss";
-import { cards, projects } from "../../data";
+import { cards } from "../../data";
 import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import Featured from "../../components/featured/Featured";
 import TrustedBy from "../../components/trustedBy/TrustedBy";
-import ProjectCard from "../../components/projectCard/ProjectCard";
-import GigCard from "../../components/gigCard/GigCard";
+// import ProjectCard from "../../components/projectCard/ProjectCard";
+// import GigCard from "../../components/gigCard/GigCard";
+// import { Slider } from "infinite-react-carousel/lib";
 
 const Home = () => {
-  const [gigs, setGigs] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/gigs")
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the state with the fetched data
-        setGigs(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching gigs:", error);
-      });
-  }, []);
-
   return (
     <div className="home">
       <Featured />
       <TrustedBy />
-      <Slide slidesToShow={5} arrowsScroll={4}>
+      <Slide slidesToShow={3} arrowsScroll={2}>
         {cards.map((card) => (
           <CatCard key={card.id} card={card} />
         ))}
@@ -71,7 +58,7 @@ const Home = () => {
             </p>
           </div>
           <div className="item">
-            <video src="./img/video.mp4" controls></video>
+            <video src="./img/video.mp4" controls="true"></video>
           </div>
         </div>
       </div>
@@ -113,12 +100,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <Slide slidesToShow={1} arrowsScroll={1}>
-        {gigs.map((gig) => (
-          <GigCard key={gig.id} item={gig} />
-        ))}
-      </Slide>
     </div>
   );
 };
