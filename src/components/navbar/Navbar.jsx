@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import "./Navbar.scss";
-import { Link, useLocation } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
 
   const { pathname } = useLocation();
+
+  const navigate = useNavigate();
 
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false);
@@ -19,10 +23,16 @@ const Navbar = () => {
     };
   }, []);
 
-  const currentUser = {
-    id: 1,
-    username: "KHATAB",
-    isSeller: true,
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const handleLogout = async () => {
+    try {
+      await newRequest.post("/auth/logout", true);
+      localStorage.setItem("currentUser", null);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -30,23 +40,21 @@ const Navbar = () => {
       <div className="container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">fiverr</span>
-            <span className="dot">.</span>
+            <span className="logo">
+              F<span className="dot">.</span>O<span className="dot">.</span>A
+              <span className="dot">.</span>M
+            </span>
           </Link>
         </div>
         <div className="links">
-          <span>Fiverr Business</span>
-          <span>Explore</span>
-          <span>English</span>
-          {!currentUser && <span>Sign in</span>}
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
-          {!currentUser && <button>Join</button>}
-          {currentUser && (
+          {/* <span>Foam Business</span> */}
+          {/* <span>Explore</span> */}
+          {/* <span>English</span> */}
+          {/* {currentUser ??
+            (currentUser?.isSeller ? <span>Seller</span> : <span>User</span>)} */}
+          {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img
-                src="https://i.pinimg.com/originals/69/7a/60/697a601f4347dbb68e1ffdbfde732a88.jpg"
-                alt=""
-              />
+              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
@@ -66,12 +74,21 @@ const Navbar = () => {
                   <Link className="link" to="/messages">
                     Messages
                   </Link>
-                  <Link className="link" to="/">
-                    Log out
+                  <Link className="link" onClick={handleLogout}>
+                    Logout
                   </Link>
                 </div>
               )}
             </div>
+          ) : (
+            <>
+              <Link to="/login" className="link">
+                Sign in
+              </Link>
+              <Link className="link" to="/register">
+                <button>Join</button>
+              </Link>
+            </>
           )}
         </div>
       </div>
@@ -79,32 +96,20 @@ const Navbar = () => {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/">
-              Graphics & Design
+            <Link className="link menuLink" to="/gigs?cat=design">
+              Design
             </Link>
-            <Link className="link menuLink" to="/">
-              Video & Animation
+            <Link className="link menuLink" to="/gigs?cat=animation">
+              Animation
             </Link>
-            <Link className="link menuLink" to="/">
-              Writing & Translation
+            <Link className="link menuLink" to="/gigs?cat=music">
+              Music
             </Link>
-            <Link className="link menuLink" to="/">
-              AI Services
+            <Link className="link menuLink" to="/gigs?cat=web">
+              Web Development
             </Link>
-            <Link className="link menuLink" to="/">
-              Digital Marketing
-            </Link>
-            <Link className="link menuLink" to="/">
-              Music & Audio
-            </Link>
-            <Link className="link menuLink" to="/">
-              Programming & Tech
-            </Link>
-            <Link className="link menuLink" to="/">
-              Business
-            </Link>
-            <Link className="link menuLink" to="/">
-              Lifestyle
+            <Link className="link menuLink" to="/gigs?cat=mobile">
+              Mobile Development
             </Link>
           </div>
         </>

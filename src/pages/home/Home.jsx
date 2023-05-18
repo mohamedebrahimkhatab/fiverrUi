@@ -1,19 +1,22 @@
 import React from "react";
 
 import "./Home.scss";
-import { cards, projects } from "../../data";
+import { cards } from "../../data";
 import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import Featured from "../../components/featured/Featured";
 import TrustedBy from "../../components/trustedBy/TrustedBy";
-import ProjectCard from "../../components/projectCard/ProjectCard";
+import Slider from "infinite-react-carousel/lib/carousel/slider";
+// import ProjectCard from "../../components/projectCard/ProjectCard";
+// import GigCard from "../../components/gigCard/GigCard";
+// import { Slider } from "infinite-react-carousel/lib";
 
 const Home = () => {
   return (
     <div className="home">
       <Featured />
       <TrustedBy />
-      <Slide slidesToShow={5} arrowsScroll={4}>
+      <Slide slidesToShow={3} arrowsScroll={2}>
         {cards.map((card) => (
           <CatCard key={card.id} card={card} />
         ))}
@@ -43,8 +46,8 @@ const Home = () => {
               Protected payments, every time
             </div>
             <p>
-              Always know what you{"'"}ll pay upfront. Your payment isn{"'"}t released
-              until you approve the work.
+              Always know what you{"'"}ll pay upfront. Your payment isn{"'"}t
+              released until you approve the work.
             </p>
             <div className="title">
               <img src="./img/check.png" alt="" />
@@ -56,7 +59,7 @@ const Home = () => {
             </p>
           </div>
           <div className="item">
-            <video src="./img/video.mp4" controls></video>
+            <video src="./img/video.mp4" controls={true}></video>
           </div>
         </div>
       </div>
@@ -65,7 +68,7 @@ const Home = () => {
         <div className="container">
           <div className="item">
             <h1>
-              Fiverr <i>business</i>
+              FOAM <i>business</i>
             </h1>
             <h1>
               A business solution designed for <i>teams</i>
@@ -98,12 +101,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <Slide slidesToShow={4} arrowsScroll={3}>
-        {projects.map((card) => (
-          <ProjectCard key={card.id} card={card} />
-        ))}
-      </Slide>
     </div>
   );
 };

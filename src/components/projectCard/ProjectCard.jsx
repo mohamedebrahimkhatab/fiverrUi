@@ -1,6 +1,7 @@
 import React from "react";
-import "./ProjectCard.scss";
 import { Link } from "react-router-dom";
+
+import "./ProjectCard.scss";
 
 const ProjectCard = ({ card }) => {
   return (

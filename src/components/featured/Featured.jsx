@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Featured.scss";
 
 const Featured = () => {
+  const [input, setInput] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    navigate(`/gigs?search=${input}`);
+  };
   return (
     <div className="featured">
       <div className="container">
         <div className="left">
-          <h1>Find the perfect <i>freelance</i> services for you business</h1>
+          <h1>
+            Find the perfect <i>freelance</i> services for you business
+          </h1>
           <div className="search">
             <div className="searchInput">
               <img src="./img/search.png" alt="" />
-              <input type="text" placeholder="try 'building mobile app'" />
+              <input
+                type="text"
+                placeholder="try 'building mobile app'"
+                onChange={(e) => setInput(e.target.value)}
+              />
             </div>
-            <button>Search</button>
+            <button onClick={handleSubmit}>Search</button>
           </div>
           <div className="popular">
             <span>Popular: </span>
-            <button>Web Design</button>
-            <button>Wordpress</button>
-            <button>Logo Design</button>
-            <button>AI Services</button>
+            <button>Design</button>
+            <button>Animation</button>
+            <button>Music</button>
+            <button>Web Deveolpment</button>
+            <button>Mobile Deveolpment</button>
           </div>
         </div>
         <div className="right">

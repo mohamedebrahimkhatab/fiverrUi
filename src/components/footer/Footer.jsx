@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./Footer.scss";
 
 function Footer() {
@@ -68,8 +69,8 @@ function Footer() {
         <hr />
         <div className="bottom">
           <div className="left">
-            <h2>liverr</h2>
-            <span>© Liverr International Ltd. 2023</span>
+            <h2>FOAM</h2>
+            <span>© FOAM International Ltd. 2023</span>
           </div>
           <div className="right">
             <div className="social">
