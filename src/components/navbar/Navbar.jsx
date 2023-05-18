@@ -40,7 +40,7 @@ const Navbar = () => {
       <div className="container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">
+            <span className="logo">
               F<span className="dot">.</span>O<span className="dot">.</span>A
               <span className="dot">.</span>M
             </span>

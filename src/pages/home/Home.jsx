@@ -6,6 +6,7 @@ import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import Featured from "../../components/featured/Featured";
 import TrustedBy from "../../components/trustedBy/TrustedBy";
+import Slider from "infinite-react-carousel/lib/carousel/slider";
 // import ProjectCard from "../../components/projectCard/ProjectCard";
 // import GigCard from "../../components/gigCard/GigCard";
 // import { Slider } from "infinite-react-carousel/lib";
@@ -58,7 +59,7 @@ const Home = () => {
             </p>
           </div>
           <div className="item">
-            <video src="./img/video.mp4" controls="true"></video>
+            <video src="./img/video.mp4" controls={true}></video>
           </div>
         </div>
       </div>
