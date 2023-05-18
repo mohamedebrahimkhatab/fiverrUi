@@ -15,6 +15,8 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Register from "./pages/register/Register";
 import Messages from "./pages/messages/Messages";
+import Pay from "./pages/pay/Pay";
+import Success from "./pages/success/Success";
 
 const queryClient = new QueryClient();
 
@@ -68,8 +70,7 @@ function App() {
           path: "/gig/:id",
           element: <Gig />,
         },
-      ],
-    },
+     
     {
       path: "/register",
       element: <Register />,
@@ -77,6 +78,16 @@ function App() {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/pay/:id",
+      element: <Pay />,
+    },
+    {
+      path: "/success",
+      element: <Success />,
+    }, 
+  ],
     },
   ]);
 

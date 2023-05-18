@@ -7,7 +7,7 @@ import "./Pay.scss";
 import newRequest from "../../utils/newRequest";
 import CheckoutForm from "../../components/checkoutForm/CheckoutForm";
 
-const stripePromise = loadStripe("paste your public key");
+const stripePromise = loadStripe("pk_test_51N8uSTLxQgBkUR8rhpuOXiBGNuvrwXjtGsjDEaJMUcYm6YKjIMinLvvPJBsWDROWrIjLW2ivtm8XNWyvFNJyDjoe00U1VRt9Gq");
 
 const Pay = () => {
   const [clientSecret, setClientSecret] = useState("");
